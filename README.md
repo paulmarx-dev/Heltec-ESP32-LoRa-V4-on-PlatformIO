@@ -46,13 +46,24 @@ If you haven't already:
 
 Alternatively, follow the [official PlatformIO installation guide](https://platformio.org/install/ide?install=vscode).
 
-### Step 2: Install Arduino IDE
+### Step 2: Install USB Driver
+
+The Heltec ESP32 V4 board uses a CP2102N USB-to-UART bridge chip. Your computer needs the proper drivers to recognize and communicate with the board over USB.
+
+1. Visit the [Silicon Labs USB-to-UART Bridge Driver downloads page](https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers?tab=downloads)
+2. Download the driver for your operating system (macOS, Windows, or Linux)
+3. Install the driver following the provided instructions
+4. Restart your computer after installation
+
+**Note:** Without this driver, your board won't appear in the device list when you try to upload, and you'll see "Port not found" errors.
+
+### Step 3: Install Arduino IDE
 
 1. Download the latest **Arduino IDE** from [arduino.cc/en/software](https://www.arduino.cc/en/software/)
 2. Install it following their standard installation process
 3. Note the installation location (you'll need it later)
 
-### Step 3: Install Heltec V4 Board Libraries
+### Step 4: Install Heltec V4 Board Libraries
 
 Follow the official Heltec installation guide for your operating system:
 
@@ -60,7 +71,7 @@ Follow the official Heltec installation guide for your operating system:
 2. Download and follow the instructions for your OS (macOS, Windows, or Linux)
 3. This installs the core board support package for the Heltec ESP32 V4
 
-### Step 4: Install Heltec ESP32 Libraries (Optional but Recommended)
+### Step 5: Install Heltec ESP32 Libraries (Optional but Recommended)
 
 For advanced examples and peripheral support (LoRa, OLED display, GPS/GNSS, etc.):
 
@@ -74,7 +85,7 @@ For advanced examples and peripheral support (LoRa, OLED display, GPS/GNSS, etc.
 
 The following steps enable PlatformIO to recognize and support the Heltec V4 board.
 
-### Step 5: Copy Board Configuration File
+### Step 6: Copy Board Configuration File
 
 1. Locate your PlatformIO installation directory. On macOS, it's typically:
    ```
@@ -85,7 +96,7 @@ The following steps enable PlatformIO to recognize and support the Heltec V4 boa
 
 3. Copy this file into the `boards/` directory
 
-### Step 6: Add Pin Configuration
+### Step 7: Add Pin Configuration
 
 1. Navigate to the variants directory:
    ```
@@ -101,7 +112,7 @@ The following steps enable PlatformIO to recognize and support the Heltec V4 boa
 
 4. Place `pins_arduino.h` inside the newly created `heltec_wifi_lora_32_V4/` folder
 
-### Step 7: Restart Visual Studio Code
+### Step 8: Restart Visual Studio Code
 
 Close and reopen VS Code completely. PlatformIO will now recognize the Heltec ESP32 V4 board.
 
@@ -138,7 +149,7 @@ If you're using Heltec examples or libraries that depend on Arduino libraries:
 
 3. Replace `YOUR_USERNAME` with your actual macOS username
 
-**Note:** You'll need to add this line to every new PlatformIO project. The configuration files from Steps 5-6 only need to be set up once.
+**Note:** You'll need to add this line to every new PlatformIO project. The configuration files from Steps 6-7 only need to be set up once.
 
 ---
 
@@ -187,7 +198,7 @@ If the above doesn't work, try **manual upload mode**:
 
 ### Heltec Examples Don't Compile
 
-Make sure you've completed **Steps 3-4** and added the `lib_extra_dirs` path to your `platformio.ini` (see the configuration section above).
+Make sure you've completed **Steps 4-5** and added the `lib_extra_dirs` path to your `platformio.ini` (see the configuration section above).
 
 ### Examples Work But Pin Definitions Are Wrong
 
