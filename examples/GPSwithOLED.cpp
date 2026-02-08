@@ -1,3 +1,43 @@
+/**
+ * GPS/GNSS Data Display with OLED
+ * 
+ * This example demonstrates how to interface a u-blox GNSS/GPS module with the
+ * Heltec ESP32 LoRaWAN V4 board and display real-time position and time data
+ * on a 128x64 OLED screen.
+ * 
+ * Features:
+ * - GNSS module initialization and power management
+ * - UART serial communication at 9600 baud
+ * - Real-time position tracking (latitude, longitude)
+ * - Time synchronization from GPS signal
+ * - OLED display with search progress indicator
+ * - Antenna status monitoring (open/shorted detection)
+ * - Uptime counter display
+ * - Serial output for debugging
+ * 
+ * Hardware Pins (Heltec V4):
+ * - GNSS RX: GPIO 39 (receives data from GPS module)
+ * - GNSS TX: GPIO 38 (sends commands to GPS module)
+ * - GNSS RST: GPIO 42 (GPS reset pin)
+ * - GNSS WAKE: GPIO 40 (GPS wake pin)
+ * - VGNSS_CTRL: GPIO 34 (GPS power control, active LOW)
+ * - OLED: I2C with predefined SDA_OLED, SCL_OLED, RST_OLED pins
+ * 
+ * Required Libraries:
+ * - Heltec ESP32 Dev-Boards (for OLED and board support)
+ * - TinyGPS++ (for GPS data parsing)
+ * 
+ * Display Output:
+ * - Searching state: "Searching GPS ..." with progress bar
+ * - Locked state: Time (HH:MM:SS.CS), Latitude, Longitude
+ * - Top right: Antenna status (ANT OK / ANT OPEN)
+ * - Bottom right: Device uptime in seconds
+ * 
+ * Author: Paul Marx
+ * Date: February 2026
+ * License: MIT
+ */
+
 #include <Arduino.h>
 #include "HT_TinyGPS++.h"
 #include <Wire.h>
